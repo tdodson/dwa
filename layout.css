@@ -1,0 +1,44 @@
+/*Column Layout*/
+body, html {
+	margin: 0;
+	padding: 0;
+	color: #000;
+	background: #FFF;
+}
+
+
+#wrap {
+	width: 960px;
+	margin: 0 auto;
+	background: #99c;
+}
+
+#header {
+	background: #ddd;
+}
+
+#content {
+	background: #9c9;
+	float: right;
+	width: 710px;
+}
+
+#content p {
+	padding: 0 10px 0 10px;
+}
+
+#sidebar {
+	background: #c99;
+	float: left;
+	width: 250px;
+}
+
+#footer {
+	clear: both;
+	background: #cc9;
+}
+
+/*IE 6 Fix*/
+* html #footer {
+	height: 1px;
+}

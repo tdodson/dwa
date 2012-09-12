@@ -1,0 +1,20 @@
+/*Fonts, headers, etc.*/
+body {
+	font-family: "Lucida Grande", Verdana, sans-serif;
+	font-size: .875em;
+	color: #9A9999;
+}
+
+h2 {
+	
+}
+
+/*Navigation*/
+ul#navigation {
+	list-style: none;
+}
+
+ul#navigation a {
+	text-decoration: none;
+}
+
