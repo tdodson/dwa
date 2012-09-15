@@ -27,7 +27,7 @@ section {
 	padding: 0 10px 0 10px;
 }
 
-aside {
+#sidebar {
 	background: #c99;
 	float: left;
 	width: 250px;
