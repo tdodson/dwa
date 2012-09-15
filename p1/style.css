@@ -1,20 +1,13 @@
 /*Fonts, headers, etc.*/
 body {
-	font-family: "Lucida Grande", Verdana, sans-serif;
+	font-family: Alegreya, Georgia, serif;
 	font-size: .875em;
-	color: #9A9999;
 }
 
-h2 {
-	
+.red {
+	color: red;
 }
 
-/*Navigation*/
-ul#navigation {
-	list-style: none;
+.sc {
+	font-family: 'Alegreya SC', Georgia, serif; 
 }
-
-ul#navigation a {
-	text-decoration: none;
-}
-

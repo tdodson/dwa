@@ -6,34 +6,27 @@ body, html {
 	background: #FFF;
 }
 
-
 #wrap {
 	width: 960px;
 	margin: 0 auto;
-	background: #99c;
+	padding-top: 200px;
 }
 
-header {
-	background: #ddd;
-}
-
-section {
-	background: #9c9;
-	float: right;
-	width: 710px;
+article {
+	width: 400px;
+	margin-left: 280px;
+	line-height: 1.25em;
+	border: solid 1px;
 }
 
 #content p {
 	padding: 0 10px 0 10px;
 }
 
-#sidebar {
-	background: #c99;
-	float: left;
-	width: 250px;
-}
-
 footer {
+	font-family: 'Lucida Grande', Verdana, sans-serif;
+	font-size: 0.5em;
+	font-color: #666;
 	clear: both;
-	background: #cc9;
+	padding-top: 75px;
 }
