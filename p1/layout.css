@@ -17,17 +17,17 @@ header {
 	background: #ddd;
 }
 
-article {
+section {
 	background: #9c9;
 	float: right;
 	width: 710px;
 }
 
-p {
+#content p {
 	padding: 0 10px 0 10px;
 }
 
-section {
+aside {
 	background: #c99;
 	float: left;
 	width: 250px;
