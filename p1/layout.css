@@ -13,32 +13,27 @@ body, html {
 	background: #99c;
 }
 
-#header {
+header {
 	background: #ddd;
 }
 
-#content {
+article {
 	background: #9c9;
 	float: right;
 	width: 710px;
 }
 
-#content p {
+p {
 	padding: 0 10px 0 10px;
 }
 
-#sidebar {
+section {
 	background: #c99;
 	float: left;
 	width: 250px;
 }
 
-#footer {
+footer {
 	clear: both;
 	background: #cc9;
-}
-
-/*IE 6 Fix*/
-* html #footer {
-	height: 1px;
 }
