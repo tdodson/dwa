@@ -2,6 +2,16 @@
 body {
 	font-family: Alegreya, Georgia, serif;
 	font-size: .875em;
+	background-image: url(images/retina_wood.png);
+}
+
+article {
+	line-height: 1.25em;
+	border: solid 1px;
+	box-shadow: 6px 6px 5px #888;
+	-moz-box-shadow: 6px 6px 5px #888;
+	-webkit-box-shadow: 6px 6px 5px #888;
+	background-image: url(images/embossed_paper.png);
 }
 
 .red {

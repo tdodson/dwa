@@ -2,8 +2,6 @@
 body, html {
 	margin: 0;
 	padding: 0;
-	color: #000;
-	background: #FFF;
 }
 
 #wrap {
@@ -15,8 +13,6 @@ body, html {
 article {
 	width: 400px;
 	margin-left: 280px;
-	line-height: 1.25em;
-	border: solid 1px;
 }
 
 #content p {
