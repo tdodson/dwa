@@ -12,7 +12,25 @@ class users_controller extends base_controller {
 	}
 	
 	public function signup() {
-		echo "This is the signup page";
+		
+		#Setup View
+			$this->template->content = View::instance('v_users_signup');
+			$this->template->title = "Signup";
+
+		#Render Template
+			echo $this->template;
+	}
+
+	public function p_signup() {
+
+		/* #Dump out the results of POST to see what the form submitted
+		print_r($_POST) */
+
+		# Insert this user into the database
+		$user_id = DB::instance(DB_NAME)->insert("users", $_POST);
+
+		#Confirm signup
+		echo "Welcome to thingamajig! Thanks for signing up.";
 	}
 	
 	public function login() {
