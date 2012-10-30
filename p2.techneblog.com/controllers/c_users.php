@@ -55,6 +55,7 @@ class users_controller extends base_controller {
 
 		# Load the template
 		$this->template->content = View::instance("v_users_login");
+		$this->template->title = "Login";
 
 		# Render the template
 		echo $this->template;
@@ -75,59 +76,65 @@ class users_controller extends base_controller {
 		$q = "SELECT token
 			FROM users
 			WHERE email = '".$_POST['email']."'
-			AND password = '".$_POST['password']."'
-			";
+			AND password = '".$_POST['password']."'";
 
 		$token = DB::instance(DB_NAME)->select_field($q);
 
 		# Login failed
-		if($token == "") {
+		if(!token) {
 			Router::redirect("/users/login");
-		}
-		# Login passwed
-		else {
-			setcookie("token", $token, strtotime('+2 weeks'), '/');
 
+		# Login password
+		} else {
+			setcookie("token", $token, strtotime('+1 year'), '/');
+
+			#redirect to main page
 			Router::redirect("/");
 		}
 
 	}
 
-
 	/*-------------------------------------------------------------------------------------------------
 	
 	-------------------------------------------------------------------------------------------------*/
 	public function logout() {
-		echo "display the logout page";
+		# Generate and save a new token for next login
+		$new_token = sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());
+		
+		# Create the data array for the update method
+		$data = Array("token" => $new_token);
+
+		# Updated DB
+		DB::instance(DB_NAME)->update("users", $data, "WHERE token = '".$this->user->token. "'");
+
+		# Delete the token cookie to logout user
+		setcookie("token", "", strtotime('-1 year'), '/');
+
+		# Back to landing page
+		Router::redirect("/");
+
 	}
 
 
 	/*-------------------------------------------------------------------------------------------------
 	
 	-------------------------------------------------------------------------------------------------*/
-	public function profile($user_name = NULL) {
+	public function profile() {
 
 		# Not logged in
 		if(!$this->user) {
 			echo "Members only. <a href='/users/login/'>Please login.</a>";
-			return;
+			return false;
 		}
 
-		# Logged in	
-		if($user_name == NULL) {
-			echo "You did not specify a user";
-		} else {
+		# Setup the view
+			$this->template->content = View::instance("v_users_profile");
+			$this->template->title   = "Profile for ".$user_name;
 
-			# Setup the view
-				$this->template->content = View::instance("v_users_profile");
-				$this->template->title   = "Profile for ".$user_name;
+		# Don't need to pass any variables to the view because all we need is $user and that's already set globally in c_base.php
 
-			# Don't need to pass any variables to the view because all we need is $user and that's already set globally in c_base.php
-
-			# Render the view
-				echo $this->template;
-
-		}	
+		# Render the view
+			echo $this->template;	
 	}
 
 }

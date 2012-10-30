@@ -1,6 +1,8 @@
-<pre>
-Hello World!
-Controller: c_index.php
-Method: index()
-View: v_index_index.php
-</pre>
+<h1>Hi</h1>
+<?php 
+/*	if (!$user) {
+		print_r "welcome new user";
+	} else {
+		print_r "Welcome back";
+	}
+?> 
