@@ -56,6 +56,59 @@ class posts_controller extends base_controller {
 		# Render view
 		echo $this->template;
 	}
+
+	public function users() {
+		# Setup the view
+		$this->template->content = View::instance("v_posts_users");
+		$this->template->title = "Users";
+
+		# Query to get users
+		$q = "SELECT *
+			FROM users";
+
+		# Store users in a variable
+		$users = DB::instance(DB_NAME)->select_rows($q);
+
+		# Find users followed by this user.
+			$q = "SELECT *
+				FROM users_users
+				WHERE user_id = ".$this->user->user_id;
+
+			$connections = DB::instance(DB_NAME)->select_array($q, 'user_id_followed');
+			
+		# Pass data (users and connections) to the view
+		$this->template->content->users       = $users;
+		$this->template->content->connections = $connections;
+
+		# Render the view
+		echo $this->template;
+
+	}
+
+	public function follow ($user_id_followed) {
+		# Prepare our data array to be inserted
+		$data = Array(
+			"created" => Time::now(),
+			"user_id" => $this->user->user_id,
+			"user_id_followed" => $user_id_followed
+		);
+	
+		# Do the insert
+		DB::instance(DB_NAME)->insert('users_users', $data);
+
+		# Send them back
+		Router::redirect("/posts/users");
+	}
+
+	public function unfollow($user_id_followed) {
+
+		# Delete this connection
+		$where_condition = 'WHERE user_id = '.$this->user->user_id.' AND user_id_followed = '.$user_id_followed;
+		DB::instance(DB_NAME)->delete('users_users', $where_condition);
+		
+		# Send them back
+		Router::redirect("/posts/users");
+	}	
 }
 
 ?>
